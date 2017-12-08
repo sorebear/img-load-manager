@@ -12,6 +12,8 @@ img.img-load-mgr__low-res {
    -webkit-filter: blur(10px);
    position: absolute;
    backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -webkit-backface-visibility: hidden;
    z-index: -1;
    transition: .8s;
    transform: scale(1);
@@ -21,6 +23,8 @@ img.img-load-mgr__high-res {
    width: 100%;
    transition: .8s;
    backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -webkit-backface-visibility: hidden;
    opacity: 1;
    margin-bottom: -1px;
    transform: scale(1);
