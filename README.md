@@ -28,7 +28,7 @@ Second, open up the PHP document where you'd like to display images and place th
 ?>
 ```
 
-* You can change the $img-directory to point to any directory within your project containing images. 
+* You can change the $img-directory to point to any directory within your project containing images. The created thumbnails will be placed into a folder called "thumb" which will be nested in the designated image direcotry. 
 
 _**Note:** that all images in this folder will be selected and displayed in alaphanumeric order by filename._
 
