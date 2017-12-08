@@ -15,11 +15,6 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Image Load</title>
    <link href="style.css" rel="stylesheet">
-   <style>
-      .img-container {
-         width: 100%;
-      }
-   </style>
 </head>
 <body>
    <h1>Image Compression</h1>
