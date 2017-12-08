@@ -1,3 +1,12 @@
+/* 
+* The .img-container style will be applied to all images rendered by the img-load-manager
+*/
+.img-load-mgr-container {
+   width: 50%;
+   float: left;
+   padding: 5rem;
+}
+
 * {
    padding: 0;
    margin: 0;
@@ -32,10 +41,4 @@ a:visited, a:link, a:active {
    color: white;
    font-size: 1.2rem;
    padding: .5rem;
-}
-
-.img-container {
-   width: 50%;
-   float: left;
-   padding: 5rem;
 }

@@ -1,7 +1,7 @@
 class imageManagerClass {
    constructor() {
-      this.highResArray = document.getElementsByClassName('high-res');
-      this.lowResArray = document.getElementsByClassName('low-res');
+      this.highResArray = document.getElementsByClassName('img-load-mgr__high-res');
+      this.lowResArray = document.getElementsByClassName('img-load-mgr__low-res');
       this.init();
    }
    init() {
@@ -18,12 +18,12 @@ class imageManagerClass {
          (function(i) {
             setTimeout(function() {
                if (self.highResArray[i].complete) {
-                  self.highResArray[i].classList.remove("hidden", "enlarge");
-                  self.lowResArray[i].classList.remove("enlarge");
+                  self.highResArray[i].classList.remove("img-load-mgr__hidden", "img-load-mgr__enlarge");
+                  self.lowResArray[i].classList.remove("img-load-mgr__enlarge");
                } else {
                   self.highResArray[i].onload = function() {
-                     self.highResArray[i].classList.remove("hidden", "enlarge");
-                     self.lowResArray[i].classList.remove("enlarge");
+                     self.highResArray[i].classList.remove("img-load-mgr__hidden", "img-load-mgr__enlarge");
+                     self.lowResArray[i].classList.remove("img-load-mgr__enlarge");
                   }
                }
             });
