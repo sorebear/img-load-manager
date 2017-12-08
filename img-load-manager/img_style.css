@@ -1,0 +1,31 @@
+.img-wrapper {
+   position: relative;
+   overflow: hidden;
+}
+
+img.low-res {
+   width: 100%;
+   filter: blur(10px);
+   position: absolute;
+   backface-visibility: hidden;
+   z-index: -1;
+   transition: .8s;
+   transform: scale(1);
+}
+
+img.high-res {
+   width: 100%;
+   transition: .8s;
+   backface-visibility: hidden;
+   opacity: 1;
+   margin-bottom: -1px;
+   transform: scale(1);
+}
+
+img.hidden {
+   opacity: 0;
+}
+
+img.enlarge {
+   transform: scale(1.03);
+}
