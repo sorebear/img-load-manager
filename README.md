@@ -111,10 +111,6 @@ Here is what a full basic gallery page might look like. You can also see a full 
 
 * **Soren Baird** - *Initial work* - [sorebear](https://github.com/sorebear)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * Thank you to Envivent and Jaime Rodriguez for giving me this project and reviewing my work. 
