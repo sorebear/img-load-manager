@@ -1,6 +1,7 @@
+<!--Code Snippet #1: Place this at the top of the file in which you will be placing pictures-->
 <?php 
    // The $img_directory variable will dictate where to find the images to populate the page with
-   $img_directory = 'img-load-manager/index-images';
+   $img_directory = 'img-load-manager/images';
    
    $images = glob("$img_directory/*{jpg,png,jpeg}", GLOB_BRACE); // Makes an array of every image saved in the directory 'img/full/';
    include "img-load-manager/img_compresser.php"; // The script that creates, saves, and retrieves compressed images
@@ -17,9 +18,9 @@
    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-   <h1>Image Compression</h1>
-   <a href="gallery.php"><p>Go To Gallery 1</p></a>
-   <a href="gallery_2.php"><p>Go To Gallery 2</p></a>
+   <h1>Image Load Manager</h1>
+
+   <!--Code Snippet #2: Place where you would like your image(s) to be rendered-->
    <?php 
 
       foreach ($images as $image) {
