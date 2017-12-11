@@ -1,8 +1,7 @@
 var gulp = require("gulp");
 var uglify = require("gulp-uglify");
 var minifyCSS = require("gulp-minify-css");
-var autoPrefixer = require("gulp-autoprefixer");
-var liveReload = require("gulp-livereload");
+// var autoPrefixer = require("gulp-autoprefixer");
 var concat = require("gulp-concat");
 var plumber = require("gulp-plumber");
 var sourcemaps = require("gulp-sourcemaps");
@@ -11,11 +10,10 @@ var babel = require("gulp-babel");
 var del = require("del");
 
 // File Paths to Watch
-var DIST_PATH = "public/dist";
-var SCRIPTS_PATH = "public/scripts/**/*.js";
-var CSS_PATH = "public/css/**/*.css";
-var SCSS_PATH = "public/scss/**/*.scss";
-var IMAGES_PATH = "public/images/**/*.{png,jpeg,jpg,svg,gif}";
+var DIST_PATH = "build";
+var SCRIPTS_PATH = "src/js/**/*.js";
+var SCSS_PATH = "src/scss/**/*.scss";
+var IMAGES_PATH = "src/images/**/*.{png,jpeg,jpg,svg,gif}";
 
 
 //Image Compression
@@ -23,11 +21,27 @@ var imagemin = require("gulp-imagemin");
 var imageminPngquant = require("imagemin-pngquant");
 var imageminJpegRecompress = require("imagemin-jpeg-recompress");
 
+// Direct Copies
+
+gulp.task("copy", function() {
+	console.log("Starting Copy of Includes");
+	return gulp
+		.src("src/includes/**/*")
+		.pipe(gulp.dest(DIST_PATH + "/includes"));
+});
+
+gulp.task("copyIndex", function() {
+	console.log("Starting Copy of Index");
+	return gulp
+		.src("src/index.php")
+		.pipe(gulp.dest(DIST_PATH));
+});
+
 // Sass Styles
 gulp.task("styles", function() {
 	console.log("Starting Styles Task");
 	return gulp
-		.src("public/scss/styles.scss")
+		.src("src/scss/main.scss")
 		.pipe(
 			plumber(function(err) {
 				console.log("Styles Task Error: ", err);
@@ -35,15 +49,14 @@ gulp.task("styles", function() {
 			})
 		)
 		.pipe(sourcemaps.init())
-		.pipe(autoPrefixer())
+		// .pipe(autoPrefixer())
 		.pipe(
 			sass({
 				outputStyle: "compressed"
 			})
 		)
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(DIST_PATH))
-		.pipe(liveReload());
+		.pipe(gulp.dest(DIST_PATH + "/css"))
 });
 
 // Scripts
@@ -64,10 +77,9 @@ gulp.task("scripts", function() {
 		)
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
-		.pipe(concat("main.min.js"))
+		.pipe(concat("img-loader-script.js"))
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(DIST_PATH))
-		.pipe(liveReload());
+		.pipe(gulp.dest(DIST_PATH + "/js"))
 });
 
 // Images
@@ -95,19 +107,8 @@ gulp.task("clean", function() {
 // Default Task
 gulp.task(
 	"default",
-	["clean", "images", "templates", "styles", "scripts"],
+	["clean", "images", "styles", "scripts", "copy", "copyIndex"],
 	function() {
 		console.log("Starting Default Task");
 	}
 );
-
-// Watch Files For Changes
-gulp.task("watch", ["default"], function() {
-	console.log("Starting Watch Task");
-	require("./server.js");
-	liveReload.listen();
-	gulp.watch(SCRIPTS_PATH, ["scripts"]);
-	// gulp.watch(CSS_PATH, ['styles']);
-	gulp.watch(SCSS_PATH, ["styles"]);
-	gulp.watch(TEMPLATES_PATH, ["templates"]);
-});
