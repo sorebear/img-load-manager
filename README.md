@@ -43,10 +43,10 @@ Open up the PHP document where you'd like to display images and place the follow
 ```
 
 
-Then, place the following tag wherever you would like to load an image. Make sure the string passed in is pointing to the image you want to display.
+Then, place the following tag wherever you would like to load an image, passing in the path to your desired image as the argument for ImgLdr().
 
 ```
-<?php new imgLdr("images/your-image.jpg"); ?>
+<?php new ImgLdr("images/your-image.jpg"); ?>
 ```
 
 
@@ -55,7 +55,7 @@ Then, place the following tag wherever you would like to load an image. Make sur
 All img-load-manager images are placed within a div with the class "img-loader-container", which you can target for your CSS styles.
 
 ```
-.img-load-mgr-container {
+.img-loader-container {
    width: 50%;
    float: left;
    padding: 5rem;

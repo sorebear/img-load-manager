@@ -41,13 +41,13 @@
    <h1>Image Gallery</h1>
    
    <h3>Aerial Paris</h3>
-   <?php new imgLdr('images/paris.jpg'); ?>
+   <?php new ImgLdr('images/paris.jpg'); ?>
 
    <h3>Rooftops in France</h3>
-   <?php new imgLdr('images/rooftops.jpg'); ?>
+   <?php new ImgLdr('images/rooftops.jpg'); ?>
 
    <h3>A Parisian Street</h3>
-   <?php new imgLdr('images/narrowroad.jpg'); ?>
+   <?php new ImgLdr('images/narrowroad.jpg'); ?>
 
 </body>
 </html>

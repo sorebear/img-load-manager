@@ -5,7 +5,7 @@
 * @param {string} $imagePathParam - The file path for the full version of the image
 */
 
-class imgLdr {
+class ImgLdr {
 
    public $imagePath;
    public $imageFilepath;
