@@ -1,5 +1,5 @@
 # img-loader
-A small library that creates a compressed image, displays the compressed image on the DOM until the full image is loaded, then replaces the compressed image with the full one.
+A small library to create a better image loading experience for your users. This library creates a thumbnail image, displays the blurred thumbnail on the DOM until the full image is loaded, then replaces the thumbnail with the full image.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ These instructions will get the library set up and running on your local machine
 First, clone this repo into your working project. 
 
 ```
-git clone https://github.com/sorebear/img-load-manager.git
+git clone https://github.com/sorebear/img-loader.git
 ```
 
 Second, navigate into the directory and install the necessary modules.
@@ -59,7 +59,7 @@ All img-load-manager images are placed within a div with the class "img-loader-c
 
 ## Authors
 
-* **Soren Baird** - *Initial work* - [sorebear](https://github.com/sorebear)
+* **Soren Baird** - [sorebear](https://github.com/sorebear)
 
 ## Acknowledgments
 
