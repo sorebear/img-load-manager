@@ -1,9 +1,8 @@
 <?php 
 
 /**
-* Return a compressed version of the requested image or create one and then redirect user back to the requesting page, which will rerun this script.
-* @param {string} $imagePath - The file path for the full version of the image
-* @return {string} - The file path for the compressed version of the requested image
+* Prints the full requested image and a compressed version to the DOM
+* @param {string} $imagePathParam - The file path for the full version of the image
 */
 
 class imgLdr {
@@ -14,6 +13,7 @@ class imgLdr {
    public $imageThumbFilepath;
    public $redirectBack;   
 
+   // When Instatiated get relevant information about the requested images path
    function __construct($imagePathParam) {
       $this->imagePath = $imagePathParam;
       $this->imageFilepath = pathinfo($this->imagePath, PATHINFO_DIRNAME);
@@ -23,23 +23,25 @@ class imgLdr {
    }
 
    private function attempt_to_retrieve_thumb() {
-      
       // If a thumbnail of the requested image exists, return it
       if (file_exists($this->imageThumbFilepath)) {
          $this->create_image_on_page();
          return;
       }
-
+      // Otherwise create the thumbnail
       $this->create_new_thumb();
    }
 
    private function create_image_on_page() {
-      echo "<div class='img-load-mgr-container'>";
-      echo "<div class='img-load-mgr__img-wrapper'>";
-      echo "<img class='img-load-mgr__low-res img-load-mgr__enlarge' src=$this->imageThumbFilepath alt=$this->imageFilename >";
-      echo "<img class='img-load-mgr__high-res img-load-mgr__hidden img-load-mgr__enlarge' src=$this->imagePath alt=$this->imageFilename >";
+      // Prints the high-res and low-res images to the DOM wrapped inside of two divs
+      echo "<div class='img-loader-container'>";
+      echo "<div class='img-loader__wrapper'>";
+      echo "<img class='img-loader__low-res img-loader__enlarge' src=$this->imageThumbFilepath alt=$this->imageFilename >";
+      echo "<img class='img-loader__high-res img-loader__hidden img-loader__enlarge' src=$this->imagePath alt=$this->imageFilename >";
       echo "</div>";
       echo "</div>";
+
+      // Call the ImageScript class, telling the images to switch when the high-res photo has finished loading
       echo "<script> var $this->imageFilename = new ImageScript('$this->imageFilename') </script>";
       return;
    }
@@ -67,7 +69,7 @@ class imgLdr {
          $initialSize[1]);
       
       // Save the newly created image and then reload the index page
-      imagejpeg($reduced, $this->$imageThumbFilepath);
+      imagejpeg($reduced, $this->imageThumbFilepath);
       imagedestroy($reduced);
       $this->attempt_to_retrieve_thumb();
    }

@@ -1,15 +1,20 @@
 /**
- * imageManagerConstructor handles methods related to swapping low-res photos
- * to high-res on load completion.
+ * An instance of the ImageScript is called by img-loader.php
+ * Whenever a new image loaded to the DOM
  */
 class ImageScript {
    /**
-    * On instantiation, the constructor will find and store the designated pair of photos;
+    * @param {string} imageFilename - The path to the requested image.
+    * On instantiation, class will find and store designated pair of photos;
     */
    constructor(imageFilename) {
       debugger;
-      this.highResPhoto = document.querySelector(`[alt=${imageFilename}].img-load-mgr__high-res`);
-      this.lowResPhoto = document.querySelector(`[alt=${imageFilename}].img-load-mgr__low-res`);
+      this.highResPhoto = document.querySelector(
+         `[alt=${imageFilename}].img-loader__high-res`
+      );
+      this.lowResPhoto = document.querySelector(
+         `[alt=${imageFilename}].img-loader__low-res`
+      );
       this.swapImages();
    }
 
@@ -20,20 +25,20 @@ class ImageScript {
    swapImages() {
       if (this.highResPhoto.complete) {
          this.highResPhoto.classList.remove(
-            'img-load-mgr__hidden',
-            'img-load-mgr__enlarge'
+            'img-loader__hidden',
+            'img-loader__enlarge'
          );
          this.lowResPhoto.classList.remove(
-            'img-load-mgr__enlarge'
+            'img-loader__enlarge'
          );
       } else {
          this.highResPhoto.onload = () => {
             this.highResPhoto.classList.remove(
-               'img-load-mgr__hidden',
-               'img-load-mgr__enlarge'
+               'img-loader__hidden',
+               'img-loader__enlarge'
             );
             this.lowResPhoto.classList.remove(
-               'img-load-mgr__enlarge'
+               'img-loader__enlarge'
             );
          };
       }
