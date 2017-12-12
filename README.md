@@ -45,22 +45,34 @@ Second, put the following PHP tag *within your document \<head>*
 ```
 <?php 
    echo '<link href="../build/css/main.css" rel="stylesheet" >'; // Required styles for images
-   echo '<script src="../build/js/img-loader-script.js"></script>';
 ?>
 ```
 
 
-Third, place the following PHP tag at the *bottom of your document \<body>*
+Third, call the bundle.js file at the *bottom of your document \<body>*
 
 ```
 <?php
-      // Call the ImageLoaderScript class, telling the images to switch when the high-res photo finishes loading
-      echo "<script>var imgloader = new ImageLoaderScript</script>"
-   ?>
+   echo "<script src='../build/js/bundle.js'></script>"
+?>
 ```
 
 
 ## Usage
+
+### Your Scripts
+
+This project is already configured to compile your code with Webpack. Simply add or import your code to the 'src/js/index.js' file.
+
+```
+import ImageLoaderScript from './img-loader-script.js';
+
+// Add Your Imports Here
+
+const imageLoaderScript = new ImageLoaderScript; // Instatiate ImageLoaderScript
+
+// Add Your Code Here
+```
 
 ### Instantiation
 
