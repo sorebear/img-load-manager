@@ -30,4 +30,4 @@ class ImageLoaderScript {
    }
 }
 
-module.exports = ImageLoaderScript;
+export default ImageLoaderScript;

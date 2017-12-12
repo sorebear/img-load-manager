@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sorebear/img-load-manager#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.24.1",
     "del": "^3.0.0",
     "eslint": "^4.13.0",
@@ -34,5 +35,6 @@
     "gulp-uglify": "^3.0.0",
     "gulp-webpack": "^1.5.0",
     "webpack": "^2.2.0-rc.0"
-  }
+  },
+  "dependencies": {}
 }

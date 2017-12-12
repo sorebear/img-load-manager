@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
-const babel = require('gulp-babel');
 const webpack = require('gulp-webpack');
 const del = require('del');
 
@@ -42,19 +41,8 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
   console.log('Starting Scripts Task');
   return gulp
-    .src('src/js/**/*.js')
-    .pipe(
-      plumber(function(err) {
-        console.log('Scripts Task Error: ', err);
-        this.emit('end');
-      })
-    )
+    .src('src/js/index.js')
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe(
-      babel({
-        presets: ['es2015'],
-      })
-    )
     .pipe(gulp.dest(DIST_PATH + '/js'));
 });
 
