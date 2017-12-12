@@ -1,10 +1,9 @@
 const gulp = require('gulp');
-const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
 const plumber = require('gulp-plumber');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
+const webpack = require('gulp-webpack');
 const del = require('del');
 
 // Distribution Path
@@ -30,7 +29,6 @@ gulp.task('styles', function() {
       })
     )
     .pipe(sourcemaps.init())
-    // .pipe(autoPrefixer())
     .pipe(
       sass({
         outputStyle: 'compressed',
@@ -51,15 +49,12 @@ gulp.task('scripts', function() {
         this.emit('end');
       })
     )
+    .pipe(webpack(require('./webpack.config.js')))
     .pipe(
       babel({
         presets: ['es2015'],
       })
     )
-    .pipe(sourcemaps.init())
-    .pipe(uglify())
-    .pipe(concat('img-loader-script.js'))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest(DIST_PATH + '/js'));
 });
 

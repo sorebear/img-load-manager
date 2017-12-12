@@ -29,3 +29,5 @@ class ImageLoaderScript {
       }
    }
 }
+
+module.exports = ImageLoaderScript;
