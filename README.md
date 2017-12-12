@@ -29,7 +29,7 @@ Third, create the build
 npm start
 ```
 
-### Setting Up In A File
+### Setting Up
 
 First, put the following PHP tag at the *top of your PHP document*
 
@@ -40,7 +40,7 @@ First, put the following PHP tag at the *top of your PHP document*
 ```
 
 
-Second, put the following PHP tag *within your document <head>*
+Second, put the following PHP tag *within your document \<head>*
 
 ```
 <?php 
@@ -50,7 +50,7 @@ Second, put the following PHP tag *within your document <head>*
 ```
 
 
-Third, place the following PHP tag at the *bottom of your document <body>*
+Third, place the following PHP tag at the *bottom of your document \<body>*
 
 ```
 <?php
