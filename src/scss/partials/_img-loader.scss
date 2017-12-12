@@ -4,11 +4,11 @@
       position: relative;
       overflow: hidden;
    }
-   
-   &__low-res {
+
+   &__low-res,
+   &__high-res {
       width: 100%;
       filter: blur(10px);
-      position: absolute;
       backface-visibility: hidden;
       -moz-backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
@@ -17,16 +17,14 @@
       transform: scale(1);
    }
    
+   &__low-res {
+      z-index: 0;
+   }
+   
    &__high-res {
-      width: 100%;
-      backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
       opacity: 1;
       z-index: 1;
       margin-bottom: -1px;
-      transition: all .8s linear;
-      transform: scale(1);
    }
    
    &__hidden {
