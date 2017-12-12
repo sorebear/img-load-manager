@@ -10,8 +10,7 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Image Loader</title>
    <?php 
-      echo '<link href="../build/css/main.css" rel="stylesheet" >'; // Required styles for images
-      echo '<script src="../build/js/img-loader-script.js"></script>'; // Include the ImageLoader Class
+      echo '<link href="../build/css/main.css" rel="stylesheet">'; // Required styles for images
    ?>
    <link href="demo.css" rel="stylesheet">
 </head>
@@ -32,7 +31,7 @@
 
    <?php
       // Call the ImageLoaderScript class, telling the images to switch when the high-res photo finishes loading
-      echo "<script>var imgloader = new ImageLoaderScript</script>"
+      echo "<script src='../build/js/bundle.js'></script>"
    ?>
 </body>
 </html>
