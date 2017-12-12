@@ -8,25 +8,24 @@
    &__low-res {
       width: 100%;
       filter: blur(10px);
-      -ms-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       position: absolute;
       backface-visibility: hidden;
       -moz-backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-      z-index: -1;
-      transition: .8s;
+      z-index: 0;
+      transition: all .8s linear;
       transform: scale(1);
    }
    
    &__high-res {
       width: 100%;
-      transition: .8s;
       backface-visibility: hidden;
       -moz-backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
       opacity: 1;
+      z-index: 1;
       margin-bottom: -1px;
+      transition: all .8s linear;
       transform: scale(1);
    }
    
