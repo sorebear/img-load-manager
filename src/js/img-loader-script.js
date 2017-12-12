@@ -9,46 +9,23 @@ class ImageLoaderScript {
     */
    constructor(imageFilename) {
       this.lowResPhotos = document.getElementsByClassName(
-         'img-loader__low-res'
+         'img-loader__content'
       );
       this.swapAllImages();
    }
 
    /**
-   * If the high-res photo is already loaded, swap them immediately
-   * Otherwise, instruct the photos to switch once the high-res has loaded
+   * Loops through all the photos in the lowResPhotos array
+   * Loads the high-res image and switches the source to it on load completion
    */
    swapAllImages() {
-      for (let photo of this.lowResPhotos) {
+      for (let i = 0; i < this.lowResPhotos.length; i++) {
          const highResPhoto = new Image();
-         highResPhoto.src = photo.id;
+         highResPhoto.src = this.lowResPhotos[i].id;
          highResPhoto.onload = () => {
-            photo.src = highResPhoto.src;
+            this.lowResPhotos[i].src = highResPhoto.src;
+            this.lowResPhotos[i].classList.remove('img-loader__blur');
          };
       }
    }
-
-   // swapImages() {
-   //    if (this.highResPhoto.complete) {
-   //       this.highResPhoto.classList.remove(
-   //          'img-loader__hidden',
-   //          'img-loader__enlarge'
-   //       );
-   //       this.lowResPhoto.classList.remove(
-   //          'img-loader__enlarge'
-   //       );
-   //    } else {
-   //       this.highResPhoto.onload = () => {
-   //          this.highResPhoto.classList.remove(
-   //             'img-loader__hidden',
-   //             'img-loader__enlarge'
-   //          );
-   //          this.lowResPhoto.classList.remove(
-   //             'img-loader__enlarge'
-   //          );
-   //       };
-   //    }
-   // };
 }
-
-// export default ImageLoaderScript;

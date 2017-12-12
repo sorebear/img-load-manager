@@ -29,21 +29,42 @@ Third, create the build
 npm start
 ```
 
+### Setting Up In A File
 
-### Usage
-
-Open up the PHP document where you'd like to display images and place the following code at the top of the file.
+First, put the following PHP tag at the *top of your PHP document*
 
 ```
 <?php 
    include "../build/includes/img-loader.php"; // Script to create, save, and retrieve compressed images
+?>
+```
+
+
+Second, put the following PHP tag *within your document <head>*
+
+```
+<?php 
    echo '<link href="../build/css/main.css" rel="stylesheet" >'; // Required styles for images
    echo '<script src="../build/js/img-loader-script.js"></script>';
 ?>
 ```
 
 
-Then, place the following tag wherever you would like to load an image, passing in the path to your desired image as the argument for ImgLdr().
+Third, place the following PHP tag at the *bottom of your document <body>*
+
+```
+<?php
+      // Call the ImageLoaderScript class, telling the images to switch when the high-res photo finishes loading
+      echo "<script>var imgloader = new ImageLoaderScript</script>"
+   ?>
+```
+
+
+## Usage
+
+### Instantiation
+
+Place the following tag wherever you would like to load an image, passing in the path to your desired image as the argument for ImgLdr().
 
 ```
 <?php new ImgLdr("images/your-image.jpg"); ?>

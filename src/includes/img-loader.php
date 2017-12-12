@@ -36,12 +36,16 @@ class ImgLdr {
       // Prints the high-res and low-res images to the DOM wrapped inside of two divs
       echo "<div class='img-loader-container'>";
       echo "<div class='img-loader__wrapper'>";
-      echo "<img id='$this->imagePath' class='img-loader__low-res img-loader__enlarge' src='$this->imageThumbFilepath' alt='$this->imageFilename' >";
+      echo "<img 
+         id='$this->imagePath' 
+         class='img-loader__content img-loader__blur' 
+         src='$this->imageThumbFilepath' 
+         alt='$this->imageFilename' 
+      >";
       echo "</div>";
       echo "</div>";
 
-      // Call the ImageScript class, telling the images to switch when the high-res photo has finished loading
-      echo "<script> var $this->imageFilename = new ImageLoaderScript('$this->imageFilename') </script>";
+
       return;
    }
 

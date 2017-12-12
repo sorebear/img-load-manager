@@ -1,1 +1,0 @@
-import ImageLoaderScript from '../build/js/img-loader-script'; 
