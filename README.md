@@ -106,7 +106,7 @@ You can pass in an associate array as an optional second argument to your PHP ca
 ```
 <?php new ImgLdr('images/paris.jpg', array( "thumbHeight"=>300, "id"=>"france-1", "class"=> "photos" )); ?>
 ```
-*Note: If you pass both a `thumbWidth` and `thumbHeight` it may skew your image. If you pass only one or neither, the aspect ratio will be maintained*
+*Note: If you pass both a `thumbWidth` and `thumbHeight` you will be defining a new aspect ration for your image. If you pass only one or neither, the original aspect ratio will be preserved*
 
 ## Authors
 

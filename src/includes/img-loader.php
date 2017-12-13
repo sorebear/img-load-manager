@@ -25,7 +25,7 @@ class ImgLdr {
       $this->imageThumbFilepath = $this->imageFilepath . "/" . $this->imageFilename . "-thumb.jpg";
 
       // Variables set based on option $customSet argument
-      $this->thumbWidth = isset($customSet['thumbWidth']) ? $customSet['thumbWidth'] : 200;
+      $this->thumbWidth = isset($customSet['thumbWidth']) ? $customSet['thumbWidth'] : null;
       $this->thumbHeight = isset($customSet['thumbHeight']) ? $customSet['thumbHeight'] : null;
       $this->class = isset($customSet['class']) ? $customSet['class'] : '';
       $this->id = isset($customSet['id']) ? $customSet['id'] : $this->imageFilename;
@@ -66,6 +66,7 @@ class ImgLdr {
             $this->thumbWidth = $this->thumbHeight / $initialSize[1] * $initialSize[0];
          }
       } else {
+         $this->thumbWidth = $this->thumbWidth ? $this->thumbWidth : 200;
          $this->thumbHeight = $this->thumbWidth / $initialSize[0] * $initialSize[1];
       }
 

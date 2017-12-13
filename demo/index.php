@@ -19,7 +19,7 @@
    <?php new ImgLdr('images/paris.jpg', array("thumbWidth"=>300, "id"=>"paris")); ?>
 
    <h3>Rooftops in France</h3>
-   <?php new ImgLdr('images/rooftops.jpg', array("class"=>"awesome test")); ?>
+   <?php new ImgLdr('images/rooftops.jpg', array("class"=>"awesome test", "thumbWidth"=>150, "thumbHeight"=>150)); ?>
 
    <h3>A Parisian Street</h3>
    <?php new ImgLdr('images/narrowroad.jpg'); ?>
