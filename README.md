@@ -100,11 +100,11 @@ You can pass in an associate array as an optional second argument to your PHP ca
 #### Here are the keys and values this associative array will take:
 * `@param 'thumbWidth' {number}` - Specify the desired width for created thumbnail \(*ex - 100*)
 * `@param 'thumbHeight' {number}` - Specify the desired height for created thumbnail \(*ex - 50*)
-* `@param 'class' {string}` - Specify additional class(es) for image container. Seperate multiple classes by spaces \(*ex - 'gallery-images my-class'*)
+* `@param 'class' {string}` - Specify additional class(es) for image container. \(*ex - 'gallery-images my-class'*)
 * `@param 'id' {string}` - Specify custom id to give the image container \(*ex - 'paris'*)
 
 ```
-<?php new ImgLdr('images/paris.jpg', array( "thumbHeight"=>300, "id"=>"paris", "class"=> "my-class my-images" )); ?>
+<?php new ImgLdr('images/paris.jpg', array( "thumbHeight"=>300, "id"=>"france-1", "class"=> "photos" )); ?>
 ```
 *Note: If you pass both a `thumbWidth` and `thumbHeight` it may skew your image. If you pass only one or neither, the aspect ratio will be maintained*
 
