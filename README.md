@@ -40,21 +40,17 @@ First, put the following PHP tag at the *top of your PHP document*
 ```
 
 
-Second, put the following PHP tag *within your document \<head>*
+Second, for the necessary styling, put the following link tag *within your document \<head>*
 
 ```
-<?php 
-   echo '<link href="../build/css/main.css" rel="stylesheet" >'; // Required styles for images
-?>
+<link href="../build/css/main.css" rel="stylesheet">
 ```
 
 
 Third, call the bundle.js file at the *bottom of your document \<body>*
 
 ```
-<?php
-   echo "<script src='../build/js/bundle.js'></script>"
-?>
+<script src='../build/js/bundle.js'></script>
 ```
 
 
@@ -85,16 +81,32 @@ Place the following tag wherever you would like to load an image, passing in the
 
 ### Customizing
 
-All img-load-manager images are placed within a div with the class "img-loader-container", which you can target for your CSS styles.
+By default, all img-load-manager images are placed within a div with the class "img-loader-container" and an id matching the image filename. You can target these elements for your CSS styling. 
 
 ```
 .img-loader-container {
    width: 50%;
    float: left;
+}
+
+#my-photo {
    padding: 5rem;
 }
 ```
+### Advanced Customization
 
+You can pass in an associate array as an optional second argument to your PHP call for further customization. 
+
+#### Here are the keys and values this associative array will take:
+* @param 'thumbWidth' {number} - Specify the desired width for the created thumbnail - *ex - 100*
+* @param 'thumbHeight' {number} - Specify the desired height for the created thumbnail - *ex - 50*
+* @param 'class' {string} - Specify the class(es) you to add to the image container. Seperate multiple class names by a space - *ex - 'gallery-images my-class'*
+* @param 'id' {string} - Specify the id to give the image container *ex - 'paris'*
+
+```
+<?php new ImgLdr('images/paris.jpg', array( "thumbHeight"=>300, "id"=>"paris", "class"=> "my-class my-images" )); ?>
+```
+*Note: If you pass both a `thumbWidth` and `thumbHeight` it may skew your image. If you pass only one or neither, the aspect ratio will be maintained*
 
 ## Authors
 
