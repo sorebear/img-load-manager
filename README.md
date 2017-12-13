@@ -98,10 +98,10 @@ By default, all img-load-manager images are placed within a div with the class "
 You can pass in an associate array as an optional second argument to your PHP call for further customization. 
 
 #### Here are the keys and values this associative array will take:
-* `@param 'thumbWidth' {number}` - Specify the desired width for the created thumbnail \(*ex - 100*)
-* `@param 'thumbHeight' {number}` - Specify the desired height for the created thumbnail \(*ex - 50*)
-* `@param 'class' {string}` - Specify the class(es) you to add to the image container. Seperate multiple class names by a space \(*ex - 'gallery-images my-class'*)
-* `@param 'id' {string}` - Specify the id to give the image container \(*ex - 'paris'*)
+* `@param 'thumbWidth' {number}` - Specify the desired width for created thumbnail \(*ex - 100*)
+* `@param 'thumbHeight' {number}` - Specify the desired height for created thumbnail \(*ex - 50*)
+* `@param 'class' {string}` - Specify additional class(es) for image container. Seperate multiple classes by spaces \(*ex - 'gallery-images my-class'*)
+* `@param 'id' {string}` - Specify custom id to give the image container \(*ex - 'paris'*)
 
 ```
 <?php new ImgLdr('images/paris.jpg', array( "thumbHeight"=>300, "id"=>"paris", "class"=> "my-class my-images" )); ?>
