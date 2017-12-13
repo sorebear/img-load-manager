@@ -7,18 +7,29 @@
 
 class ImgLdr {
 
-   public $imagePath;
-   public $imageFilepath;
-   public $imageFilename;
-   public $imageThumbFilepath;
-   public $redirectBack;   
+   private $imagePath;
+   private $imageFilepath;
+   private $imageFilename;
+   private $imageThumbFilepath;
+   private $thumbWidth;
+   private $thumbHeight;
+   private $class;
+   private $id;
 
    // When Instatiated get relevant information about the requested images path
-   function __construct($imagePathParam) {
+   function __construct($imagePathParam, $customSet = array()) {
+      // Variables set based on $imagePathParam argument
       $this->imagePath = $imagePathParam;
       $this->imageFilepath = pathinfo($this->imagePath, PATHINFO_DIRNAME);
       $this->imageFilename = pathinfo($this->imagePath, PATHINFO_FILENAME);
       $this->imageThumbFilepath = $this->imageFilepath . "/" . $this->imageFilename . "-thumb.jpg";
+
+      // Variables set based on option $customSet argument
+      $this->thumbWidth = isset($customSet['thumbWidth']) ? $customSet['thumbWidth'] : 200;
+      $this->thumbHeight = isset($customSet['thumbHeight']) ? $customSet['thumbHeight'] : null;
+      $this->class = isset($customSet['class']) ? $customSet['class'] : '';
+      $this->id = isset($customSet['id']) ? $customSet['id'] : $this->imageFilename;
+
       $this->attempt_to_retrieve_thumb();
    }
 
@@ -34,15 +45,13 @@ class ImgLdr {
 
    private function create_image_on_page() {
       // Prints the high-res and low-res images to the DOM wrapped inside of two divs
-      echo "<div class='img-loader-container'>";
-      echo "<div class='img-loader__wrapper'>";
+      echo "<div id='$this->id' class='img-loader-container $this->class'>";
       echo "<img 
          id='$this->imagePath' 
-         class='img-loader__content img-loader__blur' 
+         class='img-loader__content--lr' 
          src='$this->imageThumbFilepath' 
          alt='$this->imageFilename' 
       >";
-      echo "</div>";
       echo "</div>";
 
 
@@ -52,13 +61,17 @@ class ImgLdr {
    private function create_new_thumb() {
       // Calculate the new size for the image
       $initialSize = getimagesize($this->imagePath);
-      $newWidth = 200;
-      $newHeight = $newWidth / $initialSize[0] * $initialSize[1];
-      
+      if ($this->thumbHeight) {
+         if (!$this->thumbWidth) {
+            $this->thumbWidth = $this->thumbHeight / $initialSize[1] * $initialSize[0];
+         }
+      } else {
+         $this->thumbHeight = $this->thumbWidth / $initialSize[0] * $initialSize[1];
+      }
+
       // Create the new thumbnail image
-      $reduced = imagecreatetruecolor($newWidth, $newHeight);
+      $reduced = imagecreatetruecolor($this->thumbWidth, $this->thumbHeight);
       $original = imagecreatefromjpeg($this->imagePath);
-      // header( 'Content-Type: image/jpeg');
       imagecopyresized(
          $reduced,
          $original,
@@ -66,8 +79,8 @@ class ImgLdr {
          0,
          0,
          0,
-         $newWidth,
-         $newHeight,
+         $this->thumbWidth,
+         $this->thumbHeight,
          $initialSize[0],
          $initialSize[1]);
       
