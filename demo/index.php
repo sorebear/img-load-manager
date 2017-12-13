@@ -16,7 +16,7 @@
    <h1>Image Gallery</h1>
    
    <h3>Aerial Paris</h3>
-   <?php new ImgLdr('images/paris.jpg', array("thumbWidth"=>300, "id"=>"paris")); ?>
+   <?php new ImgLdr('images/paris.jpg', array("thumbWidth"=>50, "id"=>"france-1")); ?>
 
    <h3>Rooftops in France</h3>
    <?php new ImgLdr('images/rooftops.jpg', array("class"=>"awesome test", "thumbWidth"=>150, "thumbHeight"=>150)); ?>
