@@ -11,18 +11,21 @@
       &--hr,
       &--lr {
          width: 100%;
-         backface-visibility: hidden;
-         -moz-backface-visibility: hidden;
-         -webkit-backface-visibility: hidden;
          filter: blur(20px);
+         -webkit-filter: blur(20px);
          transform: scale(1.1);
+         backface-visibility: hidden;
+      }
+
+      &--lr {
+         z-index: 0;
       }
 
       &--hr {
+         z-index: 1;
          position: absolute;
-         top: 0;
          left: 0;
-         width: 100%;
+         top: 0;
          height: 100%;
       }
    }
